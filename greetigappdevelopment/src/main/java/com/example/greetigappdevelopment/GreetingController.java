@@ -3,6 +3,7 @@ package com.example.greetigappdevelopment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -30,5 +31,9 @@ public class GreetingController {
     @GetMapping("/find/{id}")
     public Optional<Greeting> findGreetingById(@PathVariable Long id) {
         return greetingService.findGreetingById(id);
+    }
+    @GetMapping("/all")
+    public List<Greeting> getAllGreetings() {
+        return greetingService.getAllGreetings();
     }
 }
