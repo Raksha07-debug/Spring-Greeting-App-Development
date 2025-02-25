@@ -1,9 +1,13 @@
 package com.example.greetigappdevelopment;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GreetingService {
+
+ @Autowired(required = true)
+    private GreetingRepository greetingRepository;
     public String getGreetingMessage() {
         return "Hello, World!";
     }
@@ -19,4 +23,8 @@ public class GreetingService {
             return "Hello, World !";
         }
     }
+    public Greeting saveGreeting(Greeting greeting) {
+        return greetingRepository.save(greeting);
+    }
+
 }

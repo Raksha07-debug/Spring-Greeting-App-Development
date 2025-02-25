@@ -1,10 +1,7 @@
 package com.example.greetigappdevelopment;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/greeting")
@@ -23,5 +20,9 @@ public class GreetingController {
     @GetMapping("/personalised")
     public String personalisedGreeting(@RequestParam(required = false) String firstName,@RequestParam(required = false) String lastName) {
         return greetingService.getPersonalisedGreeting(firstName, lastName);
+    }
+    @PostMapping("/save")
+    public Greeting saveGreeting(@RequestBody Greeting greeting) {
+        return greetingService.saveGreeting(greeting);
     }
 }
